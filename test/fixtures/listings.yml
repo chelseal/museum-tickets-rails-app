@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  name: MyString
+  description: MyText
+  start_date: 2019-10-31
+  end_date: 2019-10-31
+  curator: MyString
+  exhibit_patron: MyString
+  photo_credit: MyText
+  museum: one
+  price: 1
+  status: 1
+
+two:
+  title: MyString
+  name: MyString
+  description: MyText
+  start_date: 2019-10-31
+  end_date: 2019-10-31
+  curator: MyString
+  exhibit_patron: MyString
+  photo_credit: MyText
+  museum: two
+  price: 1
+  status: 1
