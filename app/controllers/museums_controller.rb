@@ -1,0 +1,3 @@
+class MuseumsController < ApplicationController
+
+end
