@@ -1,4 +1,6 @@
 class MuseumsController < ApplicationController
+    attr_accessor :name, :description, :opening_time, :closing_time, :wheelchair_accessible, :street, :city, :country, :user_id
+
     def index
 
     end

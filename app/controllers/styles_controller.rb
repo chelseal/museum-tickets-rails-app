@@ -1,4 +1,6 @@
 class StylesController < ApplicationController
+    attr_accessor :name
+
     def index
 
     end

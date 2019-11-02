@@ -1,32 +1,27 @@
 class PaymentsController < ApplicationController
     before_action :authenticate_user!
     # before_action :set_payment, only: [:show, :edit, :update]
-
-    # def index
-
-    # end
-
-    # def create
-
-    # end
-
-    # def new
-
-    # end
-
-    # def edit
-
-    # end
+    skip_before_action :verify_authenticity_token, only: [:webhook]
 
     def show #(success screen)
+        @user = User.find(params[:id])
+    end
+
+    def success
 
     end
 
-    # def update
+    def webhook
+        p params
 
-    # end
+        payment_id= params[:data][:object][:payment_intent]
+        payment = Stripe::PaymentIntent.retrieve(payment_id)
+        listing_id = payment.metadata.listing_id
+        user_id = payment.metadata.user_id
 
-    # def destroy
+    p "listing id " + listing_id
+    p "user id " + user_id
 
-    # end
+    status 200
+    end
 end
