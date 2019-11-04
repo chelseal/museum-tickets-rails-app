@@ -1,1 +1,13 @@
 <h1>works!</h1>
+
+<div class="listings">
+    <% @listings.each do |listing| %>
+        <div class="listings">
+            <h3><%= link_to listing.title, listing_path(listing) %></h3>
+            <p><%= listing.description %></p>
+            <ul class="listing-actions">
+                <li><%= link_to "Edit", edit_listing_path(listing) %></li>
+                <li><%= link_to "Delete", listing_path(listing), data: { confirm: "Are you sure you want to delete #{listing.name}?", }, method: :delete %></li>
+        </div>
+    <% end %>
+</div>
