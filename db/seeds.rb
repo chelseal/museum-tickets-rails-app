@@ -1,84 +1,61 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+for i in 0..2
+    new_user = User.create(
+        first_name: Faker::Name.first_name,
+        last_name: Faker::Name.last_name,
+        password: "testing123",
+        email: "test+#{i}@gmail.com"
+        )
 
-# Random date in the future (up to maximum of N days)
-# Keyword arguments: days
+        #creates 1 museum per user
+    museum = new_user.create_museum(
+        name: Faker::WorldCup.stadium,
+        description: Faker::Lorem.paragraphs,
+        opening_time: "09:00:00",
+        closing_time: "18:00:00",
+        wheelchair_accessible: Faker::Boolean.boolean,
+        street: Faker::Address.street_address,
+        city: Faker::Nation.capital_city,
+        country: Faker::Address.country,
+        ) 
 
-Listings
-:title Faker::Books::CultureSeries.culture_ship
-:name Faker::Artist.name
-:description Faker::Lorem.paragraphs
-:start_date = Faker::Date.forward(days: 35)
-:end_date = Faker::Date.forward(days: 53)
-:curator = Faker::WorldCup.roster(country: 'Russia', type: 'coach')
-:exhibit_patron = Faker::JapaneseMedia::SwordArtOnline.real_name
-:photo_credit Faker::BossaNova.artist
-:museum_id
-:price
-:status
+    temp_museum_file = Down.download(Faker::LoremPixel.image + "?random=" + rand(1..1000).to_s)
+    museum.pic.attach(io: temp_museum_file, filename: File.basename(temp_museum_file.path))
 
-:pic Faker::LoremPixel.image
+    puts "created museum #{museum.name}"
+end
 
-Museums
-:name Faker::WorldCup.stadium
-:description Faker::Lorem.paragraphs
-:opening_time 
-:closing_time
-:wheelchair_accessible Faker::Boolean.boolea
-:street Faker::Address.street_address
-:city Faker::Nation.capital_city
-:country Faker::Address.country
-:user_id
+#brings an array of Musum table ids
+museum_ids = Museum.pluck(:id)
 
 styles = [
-    { name: "Abstract", kind: "style" },
-    { name: "Abstract Expressionism", kind: "style" },
-    { name: "Conceptual", kind: "style" },
-    { name: "Cubist", kind: "style" },
-    { name: "Expressionist", kind: "style" },
-    { name: "Fauvism", kind: "style"},
-    { name: "Figurative", kind: "style"},
-    { name: "Impressionist", kind: "style"},
-    { name: "Minimalsim", kind: "style"},
-    { name: "Naive", kind: "style"},
-    { name: "Photorealist", kind: "style"},
-    { name: "Pop", kind: "style"},
-    { name: "Primitive", kind: "style"},
-    { name: "Realism", kind: "style"},
-    { name: "Representational", kind: "style"},
-    { name: "Surrealism", kind: "style"}
+    { name: "Abstract" },
+    { name: "Abstract Expressionism" },
+    { name: "Conceptual" },
+    { name: "Cubist" },
+    { name: "Expressionist" },
+    { name: "Fauvism"},
+    { name: "Figurative"},
+    { name: "Impressionist"},
+    { name: "Minimalsim"},
+    { name: "Naive"},
+    { name: "Photorealist"},
+    { name: "Pop"},
+    { name: "Primitive"},
+    { name: "Realism"},
+    { name: "Representational"},
+    { name: "Surrealism"}
 ]
 
-status = [
-    { name: "draft", kind: "status" },
-    { status: "published", kind: "status"}
-]
-
-if Styles.count == 0
+if Style.count == 0
     for style in styles
         style = Style.create(style)
-
-if Listings.count == 0
-    for listing in listings
-        listing = Listing.create(listing)
-
-        temp_listing_pic = Down.download(Faker::LoremPixel.image + "?random=" + rand(1..1000).to_s)
-        ingredient.pic.attach(io: temp_listing_pic, filename: File.basename(temp_listing_pic.path))
-
-        puts "created listing #{listing.name}"
     end
 end
 
-style_ids = Style.where(kind: "style").pluck(:id)
+style_ids = Style.pluck(:id)
 
-for i in 1..10
+2.times do |index|
     listing = Listing.create(
-        
         title: Faker::Books::CultureSeries.culture_ship,
         name: Faker::Artist.name,
         description: Faker::Lorem.paragraphs,
@@ -87,27 +64,18 @@ for i in 1..10
         curator: Faker::WorldCup.roster(country: 'Russia', type: 'coach'),
         exhibit_patron: Faker::JapaneseMedia::SwordArtOnline.real_name,
         photo_credit: Faker::BossaNova.artist,
-        museum_id: ,
         price: rand(2500..10000),
-        status: 
-    )
+        status: rand(0..1),
+        museum_id: museum_ids.sample)
 
-    temp_museum_file = Down.download(Faker::LoremPixel.image + "?random=" + rand(1..1000).to_s)
-    museum.pic.attach(io: temp_museum_file, filename: File.museumname(temp_museum_file.path))
+    #changes ot listing
+    temp_listing_file = Down.download(Faker::LoremPixel.image + "?random=" + rand(1..1000).to_s)
+    listing.pic.attach(io: temp_listing_file, filename: File.basename(temp_listing_file.path))
 
-    puts "created museum #{museum.name}"
+    rand_styles = Style.where(id: style_ids.sample(rand(1..3)))
+    listing.styles = rand_styles
 
-    museum_name_id = museum_ids.sample
-    museum_flavour_ids = flavour_ids.sample(rand(1..flavour_ids.length))
-    milkshake_topping_ids = topping_ids.sample(rand(1..topping_ids.length))
-
-    listing_ids = [museum_name_id] + museum_flavour_ids + milkshake_topping_ids
-
-    listings = Listing.where(id: listing_ids)
-    museum.listings = listings
-
-    puts "added listing to museum #{listening_ids}"
+#at end of loop and before end add puts
+    puts "created listing #{listing.title}"
 end
-
-#Users first name and last name
 

@@ -1,8 +1,11 @@
 class ListingsController < ApplicationController
-    attr_accessor :title, :name, :description, :start_date, :end_date, :curator, :exhibit_patron, :photo_credit, :museum_id, :price, :status
 
     def index
-        @listings = Listing.all
+        if params[:search] && !params[:search].empty?
+            @listings = Listing.where("name LIKE ?", "%#{search}%")
+        else
+            @listings = Listing.all
+        end
     end
 
     def create
@@ -10,7 +13,8 @@ class ListingsController < ApplicationController
     end
 
     def new
-
+        @listing = Listing.new
+        @styles = Style.all
     end
 
     def edit
