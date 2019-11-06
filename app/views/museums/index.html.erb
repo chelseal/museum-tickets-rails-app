@@ -11,6 +11,13 @@
         <div class="museums">
             <h3><%= link_to museum.name, museum_path(museum) %></h3>
             <p><%= museum.description %></p>
+            <p><%= museum.opening_time %></p>
+            <p><%= museum.closing_time %></p>
+                <% if museum.pic.attached? %>
+                    <p><%= image_tag museum.pic %></p>
+                <% else %>
+                    <p><%= image_tag "museumdefault.jpeg" %></p>
+                <% end%>
             <ul class="museum-actions">
                 <li><%= link_to "Edit", edit_museum_path(museum) %></li>
                 <li><%= link_to "Delete", museum_path(museum), data: { confirm: "Are you sure you want to delete #{museum.name}?", }, method: :delete %></li>
