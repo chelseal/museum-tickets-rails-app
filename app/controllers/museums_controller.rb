@@ -1,5 +1,5 @@
 class MuseumsController < ApplicationController
-    attr_accessor :name, :description, :opening_time, :closing_time, :wheelchair_accessible, :street, :city, :country, :user_id
+    skip_before_action :verify_authenticity_token
 
     def index
         if params[:search]
@@ -10,26 +10,32 @@ class MuseumsController < ApplicationController
     end
 
     def create
-
+        puts params[:controller]
+        render plain: "working"
     end
 
     def new
-
+        puts params[:controller]
+        render plain: "working"
     end
 
     def edit
-
+        puts params[:controller]
+        render plain: "working"
     end
 
     def show
-
+        puts params[:controller]
+        render plain: "working"
     end
 
     def update
-
+        puts params[:controller]
+        render plain: "working"
     end
 
     def destroy
-
+        puts params[:controller]
+        render plain: "working"
     end
 end

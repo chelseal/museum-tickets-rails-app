@@ -1,5 +1,5 @@
 class StylesController < ApplicationController
-    attr_accessor :name
+    skip_before_action :verify_authenticity_token
 
     def index
         @name = ["Abstract", "Abstract Expressionism", "Conceptual", "Cubist", "Expressionist", "Fauvism", "Figurative", "Impressionist", "Minimalsim", "Naive", "Photorealist", "Pop", "Primitive", "Realism", "Representational", "Surrealism"]
@@ -11,6 +11,7 @@ class StylesController < ApplicationController
     end
 
     def show
-
+        puts params[:controller]
+        render plain: "working"
     end
 end

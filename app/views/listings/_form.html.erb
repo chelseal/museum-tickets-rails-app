@@ -19,11 +19,11 @@
     </div>
     <div>
         <%= form.label :start_date %>
-        <%= form.start_date :start_date %>
+        <%= form.date_field :start_date %>
     </div>
     <div>
         <%= form.label :end_date %>
-        <%= form.end_date :end_date %>
+        <%= form.date_field :end_date %>
     </div>
     <div>
         <%= form.label :curator %>
@@ -47,7 +47,7 @@
         <%= form.file_field :pic, accept: "/image/png,image/gif,image/jpeg,image/jpg" %>
     </div>
     <div>
-        <%= form.collection_check_boxes :styles_ids, styles, :id, :name %>
+        <%= form.collection_check_boxes :style_ids, style, :id, :name %>
     </div>
 
 <%# :museum_id, :status %>
