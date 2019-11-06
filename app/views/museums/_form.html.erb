@@ -1,0 +1,48 @@
+<% if museum.errors.any? %>
+    <% for error in museum.errors.full_messages %>
+        <p><%= error %></p>
+    <% end %>
+<% end %>
+
+<%= form_with model: museum, local: true do |form| %>
+    <div>
+        <%= form.label :name %>
+        <%= form.text_field :name %>
+    </div>
+    <div>
+        <%= form.label :description %>
+        <%= form.text_area :description %>
+    </div>
+    <div>
+        <%= form.label :opening_time %>
+        <%= form.time_field :opening_time %>
+    </div>
+    <div>
+        <%= form.label :closing_time %>
+        <%= form.time_field :closing_time %>
+    </div>
+    <div>
+        <%= form.label :wheelchair_accessible %>
+        <%= form.boolean :wheelchair_accessible %>
+    </div>
+    <div>
+        <%= form.label :street %>
+        <%= form.text_field :street %>
+    </div>
+    <div>
+        <%= form.label :city %>
+        <%= form.text_field :city %>
+    </div>
+    <div>
+        <%= form.label :country %>
+        <%= form.text_field :country %>
+    </div>
+    <div>
+        <%= form.label :pic %>
+        <%= form.file_field :pic, accept: "/image/png,image/gif,image/jpeg,image/jpg" %>
+    </div>
+
+<%# user_id %>
+
+    <%= form.submit %>
+<% end %>

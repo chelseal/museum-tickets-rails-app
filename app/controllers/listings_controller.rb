@@ -3,14 +3,6 @@ class ListingsController < ApplicationController
     skip_before_action :verify_authenticity_token
 
     def index
-        puts "\n"
-
-        puts params.inspect
-
-        puts "\n"
-
-        puts "params[:search]"
-
         if params[:search] && !params[:search].empty?
             search = params[:search].downcase
             @listings = Listing.where("lower(title) LIKE ?", "%#{search}%")

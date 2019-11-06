@@ -37,6 +37,16 @@
     <p>
 
     <p>
+        <% @listing.pic %>
+        <% if @listing.pic.attached? %>
+  <p>
+    <b>Image:</b>
+        <br>
+            <%= image_tag @listing.pic %>
+        <% end %>
+    </p>
+
+    <p>
         <b>Photo Credit:</b>
         <%= @listing.photo_credit %>
     <p>

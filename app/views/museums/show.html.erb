@@ -1,1 +1,54 @@
 <h1>works!</h1>
+
+<section>
+    <p>
+        <b>Name:</b>
+        <%= @museum.name %>
+    </p>
+
+    <p>
+        <b>Description:</b>
+        <%= @museum.description %>
+    <p>
+
+    <p>
+        <b>Opening Time:</b>
+        <%= @museum.opening_time %>
+    <p>
+
+    <p>
+        <b>Closing Time:</b>
+        <%= @museum.closing_time %>
+    <p>
+
+    <p>
+        <b>Wheelchair Accessible:</b>
+        <%= @museum.wheelchair_accessible %>
+    <p>
+
+    <p>
+        <b>Street:</b>
+        <%= @museum.street %>
+    <p>
+
+    <p>
+        <b>City:</b>
+        <%= @museum.city %>
+    <p>
+
+    <p>
+        <b>Country:</b>
+        <%= @museum.country %>
+    <p>
+
+    <p>
+        <% @museum.pic %>
+        <% if @museum.pic.attached? %>
+  <p>
+
+    <b>Image:</b>
+        <br>
+            <%= image_tag @museum.pic %>
+        <% end %>
+    </p>
+</section>
