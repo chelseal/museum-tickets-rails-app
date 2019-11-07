@@ -1,13 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  # get "/", to: "pages#home", as: "root"
-  # get "/milkshakes", to: "milkshakes#index", as: "milkshakes"
-  # get "/milkshakes/new", to: "milkshakes#new", as: "new_milkshake"
-  # get "/milkshakes/:id", to: "milkshakes#show", as: "milkshake"
-  # post "/milkshakes", to: "milkshakes#create"
-  # patch "/milkshakes/:id", to: "milkshakes#update"
-  # get "/milkshakes/:id/edit", to: "milkshakes#edit", as: "edit_milkshakes"
   root to: "museums#index"
   get "/museums", to: "museums#index", as: "museums"
   post "/museums", to: "museums#create"
@@ -16,7 +9,6 @@ Rails.application.routes.draw do
   get "/museums/:id", to: "museums#show", as: "museum"
   patch "/museums/:id", to: "museums#update"
   put "/museums/:id", to: "museums#update"
-  delete "/museums/:id", to: "museums#destroy"
   get "/listings", to: "listings#index", as: "listings"
   post "/listings", to: "listings#create"
   get "/listings/new", to: "listings#new", as: "new_listing"
@@ -24,7 +16,6 @@ Rails.application.routes.draw do
   get "/listings/:bob", to: "listings#show", as: "listing"
   patch "/listings/:id", to: "listings#update"
   put "/listings/:id", to: "listings#update"
-  delete "/listings/:id", to: "listings#destroy"
   get "/styles", to: "styles#index", as: "styles"
   get "/styles/:id", to: "styles#show", as: "style"
   get "/payments/:id", to: "payments#show", as: "payment"

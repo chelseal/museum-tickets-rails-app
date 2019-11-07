@@ -1,11 +1,15 @@
 class PaymentsController < ApplicationController
     skip_before_action :verify_authenticity_token, only: [:webhook]
 
-    def show #(success screen)
-        @user = User.find(params[:id])
-    end
+    # def show #(success screen)
+    #     @user = User.find(params[:id])
+    # end
 
-    def success
+    # def success
+    
+    # end
+
+    def show
 
     end
 

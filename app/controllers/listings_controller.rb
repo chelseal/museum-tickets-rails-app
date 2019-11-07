@@ -11,16 +11,19 @@ class ListingsController < ApplicationController
         end
     end
 
+    #Creates a new listing using the .build method on the logged-in user.
     def create
         listing = current_user.museum.listings.build(listing_params)
         if listing.save
             redirect_to listings_path
-            #will not return user to their own listings page, it will send them to the public listings page
+            #Upon saving the listing, user is redirected to the full listings page
+            #If the listing is not saved, the 'new' form wil be rendered for the user to start again
         else
             render :new
         end
     end
 
+    #Reads (displays) 'new' listing form and adds checkboxes for the art styles for the user to add to their new listing
     def new
         @listing = Listing.new
         @styles = Style.all
@@ -35,6 +38,7 @@ class ListingsController < ApplicationController
         
         if user_signed_in?
             session = Stripe::Checkout::Session.create(
+                submit_type: 'book',
                 payment_method_types: ['card'],
                 line_items: [{
                     name: @listing.title,
@@ -49,7 +53,7 @@ class ListingsController < ApplicationController
                         listing_id: @listing.id
                     }
                 },
-                success_url: root_url + "payments/success",
+                success_url: root_url + "payments/success?listingId=#{@listing.id}",
                 cancel_url: root_url + "listing",
             )
 
@@ -58,13 +62,17 @@ class ListingsController < ApplicationController
     end
 
     def update
-        puts params[:controller]
-        render plain: "working"
+        @listing = Listing.find(params[:id])
+        if @listing.update(listing_params)
+            redirect_to(@listing)
+        else
+            p "works"
+        end
     end
 
+    #Destroy a listing
     def destroy
-        puts params[:controller]
-        render plain: "working"
+        Listing.find(params[:id].destroy)
     end
 
 private

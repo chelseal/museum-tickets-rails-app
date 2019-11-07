@@ -1,26 +1,29 @@
-<h1>works!</h1>
+<main class="museum">
+    <h1>Museum Index works!</h1>
 
-<%= form_with url: museums_path, method: "get", local: true do |form| %>
-<%= form.label :search %>
-<%= form.text_field :search %>
-<%= form.submit "Search" %>
-<% end %>
-
-<div class="museums">
-    <% @museums.each do |museum| %>
-        <div class="museums">
-            <h3><%= link_to museum.name, museum_path(museum) %></h3>
-            <p><%= museum.description %></p>
-            <p><%= museum.opening_time %></p>
-            <p><%= museum.closing_time %></p>
-                <% if museum.pic.attached? %>
-                    <p><%= image_tag museum.pic %></p>
-                <% else %>
-                    <p><%= image_tag "museumdefault.jpeg" %></p>
-                <% end%>
-            <ul class="museum-actions">
-                <li><%= link_to "Edit", edit_museum_path(museum) %></li>
-                <li><%= link_to "Delete", museum_path(museum), data: { confirm: "Are you sure you want to delete #{museum.name}?", }, method: :delete %></li>
-        </div>
+    <%= form_with url: museums_path, method: "get", local: true do |form| %>
+    <%= form.label :search %>
+    <%= form.text_field :search %>
+    <%= form.submit "Search" %>
     <% end %>
-</div>
+
+
+    <div class="museums">
+        <% @museums.each do |museum| %>
+            <div class="museums">
+                <h3><%= link_to museum.name, museum_path(museum) %></h3>
+                <p><%= museum.description %></p>
+                <p><%= museum.opening_time %></p>
+                <p><%= museum.closing_time %></p>
+                    <% if museum.pic.attached? %>
+                        <p><%= image_tag museum.pic %></p>
+                    <% else %>
+                        <p><%= image_tag "museumdefault.jpeg" %></p>
+                    <% end%>
+                <ul class="museum-actions">
+                    <li><%= link_to "Edit", edit_museum_path(museum) %></li>
+                    <li><%= link_to "Delete", museum_path(museum), data: { confirm: "Are you sure you want to delete #{museum.name}?", }, method: :delete %></li>
+            </div>
+        <% end %>
+    </div>
+</main>

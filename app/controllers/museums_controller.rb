@@ -5,7 +5,7 @@ class MuseumsController < ApplicationController
     def index
         if params[:search] && !params[:search].empty?
             search = params[:search].downcase
-            @museums = Museum.where("name LIKE ? :search" || "country LIKE ? :search" || "city LIKE ? :search", "%#{search}%").order(:name).downcase
+            @museums = Museum.where("name LIKE ?", "%" + params[:search] + "%")
         else
             @museums = Museum.all
         end
@@ -35,13 +35,12 @@ class MuseumsController < ApplicationController
     end
 
     def update
-        puts params[:controller]
-        render plain: "working"
-    end
-
-    def destroy
-        puts params[:controller]
-        render plain: "working"
+        @museum = Museum.find(params[:id])
+        if @museum.update(museum._params)
+            redirect_to(@museum)
+        else
+            p "works"
+        end
     end
 
 private
