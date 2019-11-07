@@ -7,7 +7,6 @@ class PaymentsController < ApplicationController
 
     def success
         @listing = Listing.find(params[:listingId])
-        byebug
     end
 
     def show

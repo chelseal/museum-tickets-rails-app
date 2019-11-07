@@ -10,6 +10,11 @@
     <% @listings.each do |listing| %>
         <div class="listings">
             <h3><%= link_to listing.title, listing_path(listing) %></h3>
+            <% if listing.pic.attached? %>
+                        <p><%= image_tag listing.pic %></p>
+                    <% else %>
+                        <p><%= image_tag "listingdefault.jpeg" %></p>
+                    <% end%>
             <p><%= listing.name %></p>
             <p><%= listing.description %></p>
             <ul class="listing-actions">

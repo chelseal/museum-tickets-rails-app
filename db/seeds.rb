@@ -9,7 +9,7 @@ for i in 0..2
         #creates 1 museum per user
     museum = new_user.create_museum(
         name: Faker::WorldCup.stadium,
-        description: Faker::Lorem.paragraphs,
+        description: Faker::Lorem.paragraph,
         opening_time: "09:00:00",
         closing_time: "18:00:00",
         wheelchair_accessible: Faker::Boolean.boolean,
@@ -58,7 +58,7 @@ style_ids = Style.pluck(:id)
     listing = Listing.create(
         title: Faker::Books::CultureSeries.culture_ship,
         name: Faker::Artist.name,
-        description: Faker::Lorem.paragraphs,
+        description: Faker::Lorem.paragraph,
         start_date: Faker::Date.forward(days: 35),
         end_date: Faker::Date.forward(days: 53),
         curator: Faker::WorldCup.roster(country: 'Russia', type: 'coach'),
