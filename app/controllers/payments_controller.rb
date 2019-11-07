@@ -5,9 +5,10 @@ class PaymentsController < ApplicationController
     #     @user = User.find(params[:id])
     # end
 
-    # def success
-    
-    # end
+    def success
+        @listing = Listing.find(params[:listingId])
+        byebug
+    end
 
     def show
 

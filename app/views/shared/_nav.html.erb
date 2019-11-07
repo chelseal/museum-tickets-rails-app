@@ -1,7 +1,11 @@
-<section>
-    <%= link_to "Museums", museums_path %>
-    <a href="listings/index.html.erb" >Exhibits</a>
-    <%= link_to "Sign in", new_user_session_path %>
+<h1>Navigation partial</h1>
 
-    <a href="devise/sessions/new.html.erb" >Login</a>
+<section id="nav-left" >
+    <%= link_to "Museums", museums_path %>
+    <%= link_to "Exhibits", listings_path %>
+</section>
+
+<section id="nav-left" >
+    <%= link_to "Sign in", new_user_session_path %>
+    <%= link_to "Log in", new_user_session_path %>
 </section>

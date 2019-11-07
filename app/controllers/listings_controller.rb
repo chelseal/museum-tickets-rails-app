@@ -15,7 +15,7 @@ class ListingsController < ApplicationController
     def create
         listing = current_user.museum.listings.build(listing_params)
         if listing.save
-            redirect_to listings_path
+            redirect_to listings_path, flash[:notice] = "Exhibit successfully created"
             #Upon saving the listing, user is redirected to the full listings page
             #If the listing is not saved, the 'new' form wil be rendered for the user to start again
         else
@@ -30,11 +30,11 @@ class ListingsController < ApplicationController
     end
 
     def edit
-        @listings = Listing.all
+        @listing = Listing.find(params[:id])
     end
 
     def show
-        @listing = Listing.find(params[:bob])
+        @listing = Listing.find(params[:id])
         
         if user_signed_in?
             session = Stripe::Checkout::Session.create(
@@ -63,16 +63,11 @@ class ListingsController < ApplicationController
 
     def update
         @listing = Listing.find(params[:id])
-        if @listing.update(listing_params)
-            redirect_to(@listing)
+        if @listing.update_attributes(params[:listing])
+            redirect_to listings_path, flash[:notice] = "Exhibit successfully created"
         else
-            p "works"
+            render :edit
         end
-    end
-
-    #Destroy a listing
-    def destroy
-        Listing.find(params[:id].destroy)
     end
 
 private
