@@ -7,7 +7,6 @@
     <%= form.submit "Search" %>
     <% end %>
 
-
     <div class="museums">
         <% @museums.each do |museum| %>
             <div class="museums">
@@ -21,8 +20,7 @@
                         <p><%= image_tag "museumdefault.jpeg" %></p>
                     <% end%>
                 <ul class="museum-actions">
-                    <li><%= link_to "Edit", edit_museum_path(museum) %></li>
-                    <li><%= link_to "Delete", museum_path(museum), data: { confirm: "Are you sure you want to delete #{museum.name}?", }, method: :delete %></li>
+                    <li><%= link_to "View Exhibits", museum_path(museum) %></li>
             </div>
         <% end %>
     </div>

@@ -5,7 +5,7 @@ class MuseumsController < ApplicationController
     def index
         if params[:search] && !params[:search].empty?
             search = params[:search].downcase
-            @museums = Museum.where("name LIKE ?", "%" + params[:search] + "%")
+            @museums = Museum.where("lower(name) LIKE ?", "%#{search}%")
         else
             @museums = Museum.all
         end

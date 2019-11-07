@@ -13,8 +13,7 @@
             <p><%= listing.name %></p>
             <p><%= listing.description %></p>
             <ul class="listing-actions">
-                <li><%= link_to "Edit", edit_listing_path(listing) %></li>
-                <li><%= link_to "Delete", listing_path(listing), data: { confirm: "Are you sure you want to delete #{listing.name}?", }, method: :delete %></li>
+                <li><%= link_to "View Exhibit", listing_path(listing) %></li>
         </div>
     <% end %>
 </div>
