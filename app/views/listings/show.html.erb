@@ -41,9 +41,7 @@
             <% @listing.pic %>
             <% if @listing.pic.attached? %>
     <p>
-        <h3>Image:</h3>
-            <br>
-                <%= image_tag @listing.pic %>
+            <%= image_tag @listing.pic %>
             <% end %>
         </p>
 
@@ -69,7 +67,7 @@
     </section>
 
     <% if user_signed_in? %>
-    <button data-stripe="buy">Buy Now!</button>
+    <button data-stripe="buy">Book ticket</button>
     <% else %>
     <%= link_to "Sign in to buy this ticket", new_user_session_path %>
     <% end %>

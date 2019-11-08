@@ -7,6 +7,7 @@ class PaymentsController < ApplicationController
 
     def success
         @listing = Listing.find(params[:listingId])
+        p params
     end
 
     def show

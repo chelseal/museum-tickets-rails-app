@@ -5,7 +5,13 @@
     <%= link_to "Exhibits", listings_path %>
 </section>
 
-<section id="nav-left" >
-    <%= link_to "Sign up", new_user_session_path %>
-    <%= link_to "Log in", new_user_session_path %>
+<section id="nav-left">
+    <div>
+        <% if current_user %>
+            <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+        <% else %>
+            <%= link_to "Sign up", new_user_registration_path %>
+            <%= link_to "Log in", new_user_session_path %>
+        <% end %>
+    </div>
 </section>

@@ -12,8 +12,8 @@
             <div class="museums">
                 <h3><%= link_to museum.name, museum_path(museum) %></h3>
                 <p><%= museum.description %></p>
-                <p><%= museum.opening_time %></p>
-                <p><%= museum.closing_time %></p>
+                <p><%= museum.opening_time.strftime("%I:%M %p") %></p>
+                <p><%= museum.closing_time.strftime("%I:%M %p") %></p>
                     <% if museum.pic.attached? %>
                         <p><%= image_tag museum.pic %></p>
                     <% else %>
