@@ -12,9 +12,9 @@ class MuseumsController < ApplicationController
     end
 
     def create
-        museum = current_user(museum_params)
+        museum = current_user.build_museum(museum_params)
         if museum.save
-            redirect_to museum_path
+            redirect_to museum_path(museum)
         #will not return user to their own museum page, it will send them to the public museum page
         else
             render :new
@@ -26,8 +26,7 @@ class MuseumsController < ApplicationController
     end
 
     def edit
-        puts params[:controller]
-        render plain: "working"
+        @museum = current_user.museum
     end
 
     def show
@@ -36,7 +35,7 @@ class MuseumsController < ApplicationController
 
     def update
         @museum = Museum.find(params[:id])
-        if @museum.update(museum._params)
+        if @museum.update(museum_params)
             redirect_to(@museum)
         else
             p "works"

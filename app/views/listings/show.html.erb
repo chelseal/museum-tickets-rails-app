@@ -1,7 +1,23 @@
 <h1>works!</h1>
 
-<body>
     <section>
+        <p>
+            <% @listing.pic %>
+            <% if @listing.pic.attached? %>
+        <p>
+            <%= image_tag @listing.pic %>
+            <% end %>
+        </p>
+
+        <p>
+            <h3>Photo Credit:</h3>
+            <%= @listing.photo_credit %>
+        <p>
+
+        <p>
+            <h3>Museum:</h3>
+            <%= @listing.museum.name %>
+        <p>
         <p>
             <h3>Title:</h3>
             <%= @listing.title %>
@@ -45,26 +61,8 @@
         <p>
 
         <p>
-            <% @listing.pic %>
-            <% if @listing.pic.attached? %>
-    <p>
-            <%= image_tag @listing.pic %>
-            <% end %>
-        </p>
-
-        <p>
-            <h3>Photo Credit:</h3>
-            <%= @listing.photo_credit %>
-        <p>
-
-        <p>
-            <h3>Museum:</h3>
-            <%= @listing.museum_id %>
-        <p>
-
-        <p>
             <h3>Price:</h3>
-            <%= @listing.price %>
+            $<%= @dollars.to_f %>
         <p>
     </section>
 
@@ -85,5 +83,3 @@
             });
         });
     </script>
-
-</body>

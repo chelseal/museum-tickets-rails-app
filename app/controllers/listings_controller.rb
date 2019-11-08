@@ -35,6 +35,7 @@ class ListingsController < ApplicationController
 
     def show
         @listing = Listing.find(params[:id])
+        @dollars = "%.2f" % (@listing.price / 100.0)
         
         if user_signed_in?
             session = Stripe::Checkout::Session.create(
