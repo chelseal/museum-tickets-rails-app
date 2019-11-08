@@ -1,86 +1,89 @@
 <h1>works!</h1>
 
-<section>
-    <p>
-        <b>Title:</b>
-        <%= @listing.title %>
-    </p>
+<body>
+    <section>
+        <p>
+            <h3>Title:</h3>
+            <%= @listing.title %>
+        </p>
 
-    <p>
-        <b>Name:</b>
-        <%= @listing.name %>
-    </p>
+        <p>
+            <h3>Name:</h3>
+            <%= @listing.name %>
+        </p>
 
-    <p>
-        <b>Description:</b>
-        <%= @listing.description %>
-    <p>
+        <p>
+            <h3>Description:</h3>
+            <%= @listing.description %>
+        <p>
 
-    <p>
-        <b>Start Date:</b>
-        <%= @listing.start_date %>
-    <p>
+        <p>
+            <h3>Start Date:</h3>
+            <%= @listing.start_date %>
+        <p>
 
-    <p>
-        <b>End Date:</b>
-        <%= @listing.end_date %>
-    <p>
+        <p>
+            <h3>End Date:</h3>
+            <%= @listing.end_date %>
+        <p>
 
-    <p>
-        <b>Curator:</b>
-        <%= @listing.curator %>
-    <p>
+        <p>
+            <h3>Curator:</h3>
+            <%= @listing.curator %>
+        <p>
 
-    <p>
-        <b>Exhibit Patron:</b>
-        <%= @listing.exhibit_patron %>
-    <p>
+        <p>
+            <h3>Exhibit Patron:</h3>
+            <%= @listing.exhibit_patron %>
+        <p>
 
+        <p>
+            <% @listing.pic %>
+            <% if @listing.pic.attached? %>
     <p>
-        <% @listing.pic %>
-        <% if @listing.pic.attached? %>
-  <p>
-    <b>Image:</b>
-        <br>
-            <%= image_tag @listing.pic %>
-        <% end %>
-    </p>
+        <h3>Image:</h3>
+            <br>
+                <%= image_tag @listing.pic %>
+            <% end %>
+        </p>
 
-    <p>
-        <b>Photo Credit:</b>
-        <%= @listing.photo_credit %>
-    <p>
+        <p>
+            <h3>Photo Credit:</h3>
+            <%= @listing.photo_credit %>
+        <p>
 
-    <p>
-        <b>Museum:</b>
-        <%= @listing.museum_id %>
-    <p>
+        <p>
+            <h3>Museum:</h3>
+            <%= @listing.museum_id %>
+        <p>
 
-    <p>
-        <b>Price:</b>
-        <%= @listing.price %>
-    <p>
+        <p>
+            <h3>Price:</h3>
+            <%= @listing.price %>
+        <p>
 
-    <p>
-        <b>Status:</b>
-        <%= @listing.status %>
-    <p>
-</section>
+        <p>
+            <h3>Status:</h3>
+            <%= @listing.status %>
+        <p>
+    </section>
 
-<% if user_signed_in? %>
-<button data-stripe="buy">Buy Now!</button>
-<% else %>
-<%= link_to "Sign in to buy this ticket", new_user_session_path %>
-<% end %>
+    <% if user_signed_in? %>
+    <button data-stripe="buy">Buy Now!</button>
+    <% else %>
+    <%= link_to "Sign in to buy this ticket", new_user_session_path %>
+    <% end %>
 
-<script src="https://js.stripe.com/v3/"></script>
+    <script src="https://js.stripe.com/v3/"></script>
 
-<script>
-    document.querySelector("[data-stripe='buy']").addEventListener("click", () => {
-        const stripe = Stripe("<%= Rails.application.credentials.dig(:stripe, :public) %>");
-        
-        stripe.redirectToCheckout({
-          sessionId: "<%= @session_id %>"
+    <script>
+        document.querySelector("[data-stripe='buy']").addEventListener("click", () => {
+            const stripe = Stripe("<%= Rails.application.credentials.dig(:stripe, :public) %>");
+            
+            stripe.redirectToCheckout({
+            sessionId: "<%= @session_id %>"
+            });
         });
-    });
-</script>
+    </script>
+
+</body>
