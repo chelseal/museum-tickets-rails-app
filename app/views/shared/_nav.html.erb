@@ -14,4 +14,12 @@
             <%= link_to "Log in", new_user_session_path %>
         <% end %>
     </div>
+
+        <% if user_signed_in? %>
+            <% unless current_user.museum %>
+                <%= link_to "Add Museum", new_museum_path %>
+            <% else %>
+                <%= link_to "Update Museum", edit_museum_path %>
+            <% end %>
+        <% end %>
 </section>

@@ -10,17 +10,20 @@
     <div class="museums">
         <% @museums.each do |museum| %>
             <div class="museums">
-                <h3><%= link_to museum.name, museum_path(museum) %></h3>
-                <p><%= museum.description %></p>
-                <p><%= museum.opening_time.strftime("%I:%M %p") %></p>
-                <p><%= museum.closing_time.strftime("%I:%M %p") %></p>
+                <%= link_to museum do %>
                     <% if museum.pic.attached? %>
                         <p><%= image_tag museum.pic %></p>
                     <% else %>
                         <p><%= image_tag "museumdefault.jpeg" %></p>
                     <% end%>
-                <ul class="museum-actions">
-                    <li><%= link_to "View Exhibits", museum_path(museum) %></li>
+                <% end %>
+                    <h3><%= link_to museum.name, museum_path(museum) %></h3>
+                        <p><%= museum.description %></p>
+                        <p><%= museum.opening_time.strftime("%I:%M %p") %></p>
+                        <p><%= museum.closing_time.strftime("%I:%M %p") %></p>
+                            <ul class="museum-actions">
+                                <li><%= link_to "View Exhibits", museum_path(museum) + "#view-exhibits"%></li>
+                            </ul>
             </div>
         <% end %>
     </div>

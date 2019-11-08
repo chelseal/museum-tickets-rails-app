@@ -1,8 +1,6 @@
 <h1>Museum show works!</h1>
 
-<body>
     <section>
-
         <p>
             <% if @museum.pic.attached? %>
                 <%= image_tag @museum.pic %>
@@ -31,12 +29,11 @@
 
         <p>
             <h3>Wheelchair Accessible:</h3>
-            <%= @museum.wheelchair_accessible %>
-                    <%# if @museum.wheelchair_accessible == true %>
-                        <p><%#= Yes %></p>
-                    <%# else %>
-                        <p><%#= No %></p>
-                    <%# end%>
+                    <% if @museum.wheelchair_accessible == true %>
+                        <p> Yes </p>
+                    <% else %>
+                        <p> No </p>
+                    <% end%>
         </p>
 
         <p>
@@ -54,6 +51,9 @@
             <%= @museum.country %>
         </p>
 
+        <span id="view-exhibits" ></span>
+        
+
         <% @museum.listings.each do |listing| %>
             <% if listing.pic.attached? %>
                 <p><%= image_tag listing.pic %></p>
@@ -66,4 +66,3 @@
                 <%= listing.price %>
         <% end %>
     </section>
-</body>

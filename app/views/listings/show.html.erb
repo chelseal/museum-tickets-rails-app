@@ -33,6 +33,13 @@
         <p>
 
         <p>
+            <h3>Styles:</h3>
+            <% @listing.styles.each do |style| %>
+                <p><%= style.name %></p>
+            <% end %>
+        <p>
+
+        <p>
             <h3>Exhibit Patron:</h3>
             <%= @listing.exhibit_patron %>
         <p>
@@ -58,11 +65,6 @@
         <p>
             <h3>Price:</h3>
             <%= @listing.price %>
-        <p>
-
-        <p>
-            <h3>Status:</h3>
-            <%= @listing.status %>
         <p>
     </section>
 

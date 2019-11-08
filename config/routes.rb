@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   root to: "museums#index"
   get "/museums", to: "museums#index", as: "museums"
   post "/museums", to: "museums#create"
-  get "/museum/new", to: "museums#new", as: "new_museums"
+  get "/museums/new", to: "museums#new", as: "new_museum"
   get "/museums/:id/edit", to: "museums#edit", as: "edit_museum"
   get "/museums/:id", to: "museums#show", as: "museum"
   patch "/museums/:id", to: "museums#update"
