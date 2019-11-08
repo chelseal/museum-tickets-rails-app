@@ -7,7 +7,7 @@
             )
 
             #creates 1 museum per user
-        museum = new_user.create_museum(
+        museum = new_user.build_museum(
             name: Faker::WorldCup.stadium,
             description: Faker::Lorem.paragraph,
             opening_time: "09:00:00",
@@ -65,7 +65,6 @@
             exhibit_patron: Faker::JapaneseMedia::SwordArtOnline.real_name,
             photo_credit: Faker::BossaNova.artist,
             price: rand(2500..10000),
-            status: rand(0..1),
             museum_id: museum_ids.sample)
 
         temp_listing_file = Down.download(Faker::LoremPixel.image + "?random=" + rand(1..1000).to_s)
@@ -77,5 +76,3 @@
     #output in terminal"
         puts "created listing #{listing.title}"
     end
-
-end
