@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   patch "/listings/:id", to: "listings#update"
   put "/listings/:id", to: "listings#update"
   get "/styles", to: "styles#index", as: "styles"
-  get "/styles/:id", to: "styles#show", as: "style"
+  # get "/styles/:id", to: "styles#show", as: "style"
   get "payments/success", to: "payments#success"
   post "/payments/webhook", to: "payments#webhook"
   get "/payments/:id", to: "payments#show", as: "payment"

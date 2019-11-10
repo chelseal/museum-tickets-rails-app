@@ -35,12 +35,12 @@
 
         <p>
             <h3>Start Date:</h3>
-            <%= @listing.start_date %>
+            <%= @listing.start_date.strftime("%d %B, %Y") %>
         <p>
 
         <p>
             <h3>End Date:</h3>
-            <%= @listing.end_date %>
+            <%= @listing.end_date.strftime("%d %B, %Y") %>
         <p>
 
         <p>

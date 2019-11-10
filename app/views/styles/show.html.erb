@@ -1,1 +1,8 @@
 <h1>works!</h1>
+
+<p>
+    <h3>Styles:</h3>
+    <% @listing.styles.each do |style| %>
+        <p><%= style.name %></p>
+    <% end %>
+</p>

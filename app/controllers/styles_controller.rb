@@ -3,15 +3,14 @@ class StylesController < ApplicationController
 
     def index
         @name = ["Abstract", "Abstract Expressionism", "Conceptual", "Cubist", "Expressionist", "Fauvism", "Figurative", "Impressionist", "Minimalsim", "Naive", "Photorealist", "Pop", "Primitive", "Realism", "Representational", "Surrealism"]
-        if params[:search]
+        if params[:search].empty?
             @styles = Style.where("name LIKE ?", "%#{search}%")
         else
-            @styles = Style.all
+            @styles = Listing.styles.name.find(params[:id])
         end
     end
 
     def show
-        puts params[:controller]
-        render plain: "working"
+        @style = Style.find(params[:id])
     end
 end

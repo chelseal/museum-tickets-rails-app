@@ -1,4 +1,4 @@
-for i in 0..2
+for i in 0..19
     new_user = User.create(
         first_name: Faker::Name.first_name,
         last_name: Faker::Name.last_name,
@@ -56,7 +56,7 @@ end
 
 style_ids = Style.pluck(:id)
 
-3.times do |index|
+40.times do |index|
     listing = Listing.create(
         title: Faker::Books::CultureSeries.culture_ship,
         name: Faker::Artist.name,
@@ -72,7 +72,7 @@ style_ids = Style.pluck(:id)
     temp_listing_file = Down.download(Faker::LoremPixel.image + "?random=" + rand(1..1000).to_s)
     listing.pic.attach(io: temp_listing_file, filename: File.basename(temp_listing_file.path))
 
-    rand_styles = Style.where(id: style_ids.sample(rand(1..3)))
+    rand_styles = Style.where(id: style_ids.sample(rand(1..2)))
     listing.styles = rand_styles
 
 #output in terminal"

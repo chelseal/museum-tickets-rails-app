@@ -6,13 +6,12 @@ class PaymentsController < ApplicationController
     # end
 
     def success
-        @listing = Listing.find(params[:listingId])
-        p params
-    end
-
-    def show
 
     end
+
+    # def show
+
+    # end
 
     def webhook
         payment_id = params[:data][:object][:payment_intent]
