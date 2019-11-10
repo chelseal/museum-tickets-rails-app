@@ -1,15 +1,14 @@
-<main class="museum">
-    <h1>Museum Index works!</h1>
-
+<section class="search-bar">
     <%= form_with url: museums_path, method: "get", local: true do |form| %>
     <%= form.label :search %>
     <%= form.text_field :search %>
     <%= form.submit "Search" %>
     <% end %>
+</section>
 
-    <div class="museums">
+    <div>
         <% @museums.each do |museum| %>
-            <div class="museums">
+            <div>
                 <%= link_to museum do %>
                     <% if museum.pic.attached? %>
                         <p><%= image_tag museum.pic %></p>
@@ -17,12 +16,12 @@
                         <p><%= image_tag "museumdefault.jpeg" %></p>
                     <% end%>
                 <% end %>
-                    <h3><%= link_to museum.name, museum_path(museum) %></h3>
-                        <p><%= museum.description %></p>
-                        <p><%= museum.opening_time.strftime("%I:%M %p") %></p>
-                        <p><%= museum.closing_time.strftime("%I:%M %p") %></p>
-                            <ul class="museum-actions">
-                                <li><%= link_to "View Exhibits", museum_path(museum) + "#view-exhibits"%></li>
+                    <h3 class="museum-headings"><%= link_to museum.name, museum_path(museum) %></h3>
+                        <p class="museum-p"><%= museum.description %></p>
+                        <p class="museum-p"><%= museum.opening_time.strftime("%I:%M %p") %></p>
+                        <p class="museum-p"><%= museum.closing_time.strftime("%I:%M %p") %></p>
+                            <ul>
+                                <li class="button"><%= link_to "View Exhibits", museum_path(museum) + "#view-exhibits"%></li>
                             </ul>
             </div>
         <% end %>

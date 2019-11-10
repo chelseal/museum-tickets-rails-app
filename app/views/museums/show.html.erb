@@ -1,68 +1,68 @@
-<h1>Museum show works!</h1>
-
-    <section>
-        <p>
-            <% if @museum.pic.attached? %>
-                <%= image_tag @museum.pic %>
-            <% end %>
-        </p>
-
-        <p>
-            <h3>Name:</h3>
-            <%= @museum.name %>
-        </p>
-
-        <p>
-            <h3>Description:</h3>
-            <%= @museum.description %>
-        </p>
-
-        <p>
-            <h3>Opening Time:</h3>
-            <%= @museum.opening_time.strftime("%I:%M %p") %>
-        </p>
-
-        <p>
-            <h3>Closing Time:</h3>
-            <%= @museum.closing_time.strftime("%I:%M %p") %>
-        </p>
-
-        <p>
-            <h3>Wheelchair Accessible:</h3>
-                    <% if @museum.wheelchair_accessible == true %>
-                        <p> Yes </p>
-                    <% else %>
-                        <p> No </p>
-                    <% end%>
-        </p>
-
-        <p>
-            <h3>Street:</h3>
-            <%= @museum.street %>
-        </p>
-
-        <p>
-            <h3>City:</h3>
-            <%= @museum.city %>
-        </p>
-
-        <p>
-            <h3>Country:</h3>
-            <%= @museum.country %>
-        </p>
-
-        <span id="view-exhibits" ></span>
-        
-
-        <% @museum.listings.each do |listing| %>
-            <% if listing.pic.attached? %>
-                <p><%= image_tag listing.pic %></p>
-            <% else %>
-                <p><%= image_tag "listingdefault.jpeg" %></p>
-            <% end%>
-                <%= listing.title %>
-                <%= listing.start_date %>
-                <%= listing.end_date %>
-                <%= listing.price %>
+<section>
+    <div>
+        <% if @museum.pic.attached? %>
+            <%= image_tag @museum.pic %>
         <% end %>
-    </section>
+    </div>
+
+    <div>
+        <h3 class="museum-headings">Name:</h3>
+        <p class="museum-p"><%= @museum.name %></p>
+    </div>
+
+    <div>
+        <h3 class="museum-headings">Description:</h3>
+        <p class="museum-p"><%= @museum.description %></p>
+    </div>
+
+    <div>
+        <h3 class="museum-headings">Opening Time:</h3>
+        <p class="museum-p"><%= @museum.opening_time.strftime("%I:%M %p") %></p>
+    </div>
+
+    <div>
+        <h3 class="museum-headings">Closing Time:</h3>
+        <p class="museum-p"><%= @museum.closing_time.strftime("%I:%M %p") %></p>
+    </div>
+
+    <div>
+        <h3 class="museum-headings">Wheelchair Accessible:</h3>
+                <% if @museum.wheelchair_accessible == true %>
+                    <p class="museum-p"> Yes </p>
+                <% else %>
+                    <p class="museum-p"> No </p>
+                <% end%>
+    </div>
+
+    <div>
+        <h3 class="museum-headings">Street:</h3>
+        <p class="museum-p"><%= @museum.street %></p>
+    </div>
+
+    <div>
+        <h3 class="museum-headings">City:</h3>
+        <p class="museum-p"><%= @museum.city %></p>
+    </div>
+
+    <div>
+        <h3 class="museum-headings">Country:</h3>
+        <p class="museum-p"><%= @museum.country %></p>
+    </div>
+
+    <span id="view-exhibits" ></span>
+    
+    <h2 class="museum-headings">Current exhibitions</h2>
+
+    <% @museum.listings.each do |listing| %>
+        <% if listing.pic.attached? %>
+            <%= image_tag listing.pic %>
+        <% else %>
+            <%= image_tag "listingdefault.jpeg" %>
+        <% end%>
+            <p class="museum-headings"><%= listing.title %></p>
+        <p class="museum-headings">Start Date:</p>
+            <p class="museum-p"><%= listing.start_date %></p>
+        <p class="museum-headings">End Date:</p>
+            <p class="museum-p"><%= listing.end_date %></p>
+    <% end %>
+</section>

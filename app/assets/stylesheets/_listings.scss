@@ -43,21 +43,23 @@ $rubik: 'Rubik', sans-serif;
         font-size: 20px;
     }
 
-// Museums styling
+// Museums and listings styling
 
-.museum-headings {
+.museum {
+    h1 {
         color: $sea-blue;
         font-family: rubik;
         background-color: white;
-        font-size: 25px;
     }
 
-.museum-p {
+    p {
         color: $dark-grey;
         font-family: playfair;
         background-color: white;
-        font-size: 20px;
     }
+}
+
+// Navigation styling
 
 .nav-right {
     display: flex;
@@ -70,28 +72,4 @@ $rubik: 'Rubik', sans-serif;
     text-decoration: none;
 }
 
-// media breakpoints
-
-@media (min-width: 640px) {
-    .museum-headings {
-        font-size: 25px;
-    }
-
-    .museum-p {
-        font-size: 20px;
-    }
-}
-
-@media (min-width: 1024px) {
-    .museum-headings {
-        font-size: 35px;
-    }
-
-    .museum-p {
-        font-size: 30px;
-    }
-
-    .search-bar {
-        font-size: 30px;
-    }
-}
+// Footer styling

@@ -1,12 +1,16 @@
-<h1>Navigation partial</h1>
-
-<section id="nav-left" >
-    <%= link_to "Museums", museums_path %>
-    <%= link_to "Exhibits", listings_path %>
+<section>
+    <h1 class="museum-headings">Find a Museum</h1>
+        <button class="button">
+            <%= link_to "Museums", museums_path %>
+        </button>
+    <h1 class="museum-headings">Explore art exhibitions</h1>
+        <button class="button" >
+            <%= link_to "Exhibits", listings_path %>
+        </button>
 </section>
 
-<section id="nav-left">
-    <div>
+<section>
+    <div class="nav-right">
         <% if current_user %>
             <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
         <% else %>
@@ -15,6 +19,7 @@
         <% end %>
     </div>
 
+    <div class="nav-right">
         <% if user_signed_in? %>
             <% unless current_user.museum %>
                 <%= link_to "Add Museum", new_museum_path %>
@@ -22,4 +27,5 @@
                 <%= link_to "Update Museum", edit_museum_path(current_user.museum) %>
             <% end %>
         <% end %>
+    </div>
 </section>

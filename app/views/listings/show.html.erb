@@ -1,85 +1,81 @@
-<h1>works!</h1>
+<section>
+    <div>
+        <% if @listing.pic.attached? %>
+        <%= image_tag @listing.pic %>
+        <% end %>
+    </div>
 
-    <section>
-        <p>
-            <% @listing.pic %>
-            <% if @listing.pic.attached? %>
-        <p>
-            <%= image_tag @listing.pic %>
-            <% end %>
-        </p>
+    <div>
+        <h3 class="museum-headings">Photo Credit:</h3>
+        <p class="museum-p"><%= @listing.photo_credit %>
+    </div>
 
-        <p>
-            <h3>Photo Credit:</h3>
-            <%= @listing.photo_credit %>
-        <p>
+    <div>
+        <h3 class="museum-headings">Museum:</h3>
+        <p class="museum-p"><%= @listing.museum.name %>
+    </div>
 
-        <p>
-            <h3>Museum:</h3>
-            <%= @listing.museum.name %>
-        <p>
-        <p>
-            <h3>Title:</h3>
-            <%= @listing.title %>
-        </p>
+    <div>
+        <h3 class="museum-headings">Title:</h3>
+        <p class="museum-p"><%= @listing.title %>
+    </div>
 
-        <p>
-            <h3>Name:</h3>
-            <%= @listing.name %>
-        </p>
+    <div>
+        <h3 class="museum-headings">Name:</h3>
+        <p class="museum-p"><%= @listing.name %>
+    </div>
 
-        <p>
-            <h3>Description:</h3>
-            <%= @listing.description %>
-        <p>
+    <div>
+        <h3 class="museum-headings">Description:</h3>
+        <p class="museum-p"><%= @listing.description %>
+    </div>
 
-        <p>
-            <h3>Start Date:</h3>
-            <%= @listing.start_date.strftime("%d %B, %Y") %>
-        <p>
+    <div>
+        <h3 class="museum-headings">Start Date:</h3>
+        <p class="museum-p"><%= @listing.start_date.strftime("%d %B, %Y")  %>
+    </div>
 
-        <p>
-            <h3>End Date:</h3>
-            <%= @listing.end_date.strftime("%d %B, %Y") %>
-        <p>
+    <div>
+        <h3 class="museum-headings">End Date:</h3>
+        <p class="museum-p"><%= @listing.end_date.strftime("%d %B, %Y") %>
+    </div>
 
-        <p>
-            <h3>Curator:</h3>
-            <%= @listing.curator %>
-        <p>
+    <div>
+        <h3 class="museum-headings">Curator:</h3>
+        <p class="museum-p"><%= @listing.curator %>
+    </div>
 
-        <p>
-            <h3>Styles:</h3>
+    <div>
+        <h3 class="museum-headings">Styles:</h3>
             <% @listing.styles.each do |style| %>
-                <p><%= style.name %></p>
+        <p class="museum-p"><%= style.name %>
             <% end %>
-        <p>
+    </div>
 
-        <p>
-            <h3>Exhibit Patron:</h3>
-            <%= @listing.exhibit_patron %>
-        <p>
+    <div>
+        <h3 class="museum-headings">Exhibit Patron:</h3>
+        <p class="museum-p"><%= @listing.exhibit_patron %>
+    </div>
 
-        <p>
-            <h3>Price:</h3>
-            $<%= @dollars.to_f %>
-        <p>
-    </section>
+    <div>
+        <h3 class="museum-headings">Price:</h3>
+        <p class="museum-p"><%= @dollars.to_f %>
+    </div>
 
-    <% if user_signed_in? %>
-    <button data-stripe="buy">Book ticket</button>
-    <% else %>
-    <%= link_to "Sign in to buy this ticket", new_user_session_path %>
-    <% end %>
+<% if user_signed_in? %>
+<button class="button" data-stripe="buy">Book ticket</button>
+<% else %>
+<%= link_to "Sign in to buy this ticket", new_user_session_path %>
+<% end %>
 
-    <script src="https://js.stripe.com/v3/"></script>
+<script src="https://js.stripe.com/v3/"></script>
 
-    <script>
-        document.querySelector("[data-stripe='buy']").addEventListener("click", () => {
-            const stripe = Stripe("<%= Rails.application.credentials.dig(:stripe, :public) %>");
-            
-            stripe.redirectToCheckout({
-            sessionId: "<%= @session_id %>"
-            });
+<script>
+    document.querySelector("[data-stripe='buy']").addEventListener("click", () => {
+        const stripe = Stripe("<%= Rails.application.credentials.dig(:stripe, :public) %>");
+        
+        stripe.redirectToCheckout({
+        sessionId: "<%= @session_id %>"
         });
-    </script>
+    });
+</script>
